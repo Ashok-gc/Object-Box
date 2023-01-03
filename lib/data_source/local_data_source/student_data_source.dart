@@ -11,15 +11,15 @@ class StudentDataSource {
     try {
       return objectBoxInstance.addStudent(student);
     } catch (e) {
-      return Future.value(0);
+      return 0;
     }
   }
 
   Future<List<Student>> getStudents() async {
     try {
-      return Future.value(objectBoxInstance.getAllStudent());
+      return objectBoxInstance.getAllStudent();
     } catch (e) {
-      throw Exception("Error in getting all Students");
+      return [];
     }
   }
 

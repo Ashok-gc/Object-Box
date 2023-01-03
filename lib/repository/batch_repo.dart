@@ -9,7 +9,7 @@ abstract class BatchRepository {
 class BatchRepositoryImp extends BatchRepository {
   @override
   Future<int> addBatch(Batch batch) {
-    return Future.value(0);
+    return BatchDataSource().addBatch(batch);
   }
 
   @override

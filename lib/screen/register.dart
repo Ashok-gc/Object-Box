@@ -1,8 +1,11 @@
 import 'package:batch_student_starter/data_source/local_data_source/batch_data_source.dart';
+import 'package:batch_student_starter/model/course.dart';
 import 'package:batch_student_starter/model/student.dart';
+import 'package:batch_student_starter/repository/course_repo.dart';
 import 'package:batch_student_starter/repository/student_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import '../model/batch.dart';
 
@@ -15,6 +18,8 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   late List<Batch> _lstBatches = [];
+  late List<Course> lstcourseselected = [];
+
   late String _dropDownValue = "";
 
   final _key = GlobalKey<FormState>();
@@ -45,8 +50,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   _saveStudent() async {
-    Student student = Student(_fnameController.text, _lnameController.text,
-        _usernameController.text, _passwordController.text);
+    Student student = Student(
+      _fnameController.text,
+       _lnameController.text,
+      _usernameController.text, 
+      _passwordController.text);
 
     final batch = _lstBatches
         .firstWhere((element) => element.batchName == _dropDownValue);
@@ -133,6 +141,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                     },
                   ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  FutureBuilder(
+                      future: CourseRepositoryImpl().getAllCourse(),
+                      builder: ((context, snapshot) {
+                        if (snapshot.hasData) {
+                          return MultiSelectDialogField(
+                              items: snapshot.data!
+                                  .map((course) => MultiSelectItem(
+                                      course, course.courseName))
+                                  .toList(),
+                              listType: MultiSelectListType.CHIP,
+                              buttonText: Text("Select course"),
+                              onConfirm: (values) {
+                                lstcourseselected = values;
+                              });
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      })),
                   const SizedBox(
                     height: 8,
                   ),

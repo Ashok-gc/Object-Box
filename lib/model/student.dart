@@ -1,3 +1,4 @@
+import 'package:batch_student_starter/model/course.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:batch_student_starter/model/batch.dart';
 
@@ -12,6 +13,7 @@ class Student {
   String password;
 
   final batch = ToOne<Batch>();
+  final course = ToMany<Course>();
 
   Student(this.fname, this.lname, this.username, this.password,
       {this.stdId = 0});
