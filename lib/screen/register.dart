@@ -66,7 +66,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   @override
+  
   Widget build(BuildContext context) {
+  //   _showMessage(int status) {
+  //   if (status > 0) {
+  //     MotionToast.success(
+  //       description: const Text("Student added successfully"),
+  //     ).show(context);
+  //   } else {
+  //     MotionToast.error(description: const Text("Error in adding student"))
+  //         .show(context);
+  //   }
+  // }
+
+  //   _saveStudent() async {
+  //     print("hello");
+  //     Student student = Student(
+  //       _fnameController.text,
+  //       _lnameController.text,
+  //       _usernameController.text, 
+  //       _passwordController.text);
+  //   final batch = _lstBatches
+  //       .firstWhere((element) => element.batchName == _dropDownValue);
+
+  //   student.batch.target = batch;
+  //     int status = await StudentRepositoryImp().addStudent(student);
+  //     _showMessage(status);
+  //   }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register'),
@@ -154,7 +180,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       course, course.courseName))
                                   .toList(),
                               listType: MultiSelectListType.CHIP,
-                              buttonText: Text("Select course"),
+                              buttonText: const Text("Select course"),
                               onConfirm: (values) {
                                 lstcourseselected = values;
                               });
