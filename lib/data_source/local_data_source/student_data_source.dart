@@ -11,25 +11,29 @@ class StudentDataSource {
     try {
       return objectBoxInstance.addStudent(student);
     } catch (e) {
-      return 0;
+      return Future.value(0);
+      // return 0;
     }
   }
 
-  Future<List<Student>> getStudents() async {
+  Future<List<Student>> getStudent() async {
     try {
       return objectBoxInstance.getAllStudent();
     } catch (e) {
-      return [];
+      throw Exception("error in getting all student");
+      // return [];
     }
   }
 
   // Future<Student?> loginStudent(Student username, String password) {}
 
-  // Future<Student?> loginStudent(String username, String password) {
-  //   try {
-  //     return Future.value(objectBoxInstance.loginStudent(username));
-  //   } catch (e) {
-  //     return Future.value(null);
-  //   }
-  // }
+  Future<Student?> loginStudent(username, password) {
+    try {
+      return Future.value(objectBoxInstance.loginStudent(username, password));
+    } catch (e) {
+      return Future.value(null);
+      // or 
+      // return 0;
+    }
+  }
 }

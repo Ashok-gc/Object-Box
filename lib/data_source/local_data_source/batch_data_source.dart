@@ -9,15 +9,15 @@ class BatchDataSource {
     try{
       return objectBoxInstance.addBatch(batch);
     } catch (e){
-      return 0;
+      return Future.value(0);
     }
   }
 
-  Future<List<Batch>> getAllBatches() async {
+  Future<List<Batch>> getBatch() async {
     try {
-      return Future.value(objectBoxInstance.getAllBatch());
+      return objectBoxInstance.getAllBatch();
     } catch (e) {
-      return [];
+      throw Exception("error in getting all student");
     }
   }
 }

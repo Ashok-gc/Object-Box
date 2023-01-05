@@ -10,6 +10,5 @@ class Batch {
 
   @Backlink()
   final student = ToMany<Student>();
-
   Batch(this.batchName, {this.batchId = 0});
 }

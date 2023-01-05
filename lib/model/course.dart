@@ -5,10 +5,10 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class Course{
   @Id(assignable: true)
-  int courseId;
+  int courseID;
   String courseName;
 
   @Backlink()
   final student = ToMany<Student>();
-  Course(this.courseName, {this.courseId=0});
+  Course(this.courseName, {this.courseID=0});
 }

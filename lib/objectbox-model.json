@@ -77,7 +77,7 @@
       "properties": [
         {
           "id": "1:2851840729173984969",
-          "name": "courseId",
+          "name": "courseID",
           "type": 6,
           "flags": 129
         },

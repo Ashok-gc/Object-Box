@@ -39,18 +39,24 @@ class ObjectBoxInstance {
   int addBatch(Batch batch) {
     return _batch.put(batch);
   }
+  int addStudent(Student student) {
+    return _student.put(student);
+  }
 
   List<Batch> getAllBatch() {
     return _batch.getAll();
   }
 
-//----------------------Student Queries-----------------
-  int addStudent(Student student) {
-    return _student.put(student);
-  }
-
   List<Student> getAllStudent() {
     return _student.getAll();
+  }
+
+  int addCourse(Course course) {
+    return _course.put(course);
+  }
+
+  List<Course> getAllCourse() {
+    return _course.getAll();
   }
 
 
@@ -63,13 +69,7 @@ class ObjectBoxInstance {
       .findFirst();
   }
 
-  int addCourse(Course course) {
-    return _course.put(course);
-  }
-
-  List<Course> getAllCourse() {
-    return _course.getAll();
-  }
+  
 /* When app is opened for the first time,
   insert some batches in the database
  */

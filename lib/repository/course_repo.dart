@@ -4,18 +4,18 @@ import '../model/course.dart';
 // import '../model/student.dart';
 
 abstract class CourseRepository{
+  Future<List<Course>> getCourse();
   Future<int> addCourse(Course course);
-  Future<List<Course>> getAllCourse();
 }
 
-class CourseRepositoryImpl extends CourseRepository{
+class CourseRepositoryIml extends CourseRepository{
   @override
   Future<int> addCourse(Course course){
     return CourseDataSource().addCourse(course);
   }
 
   @override
-  Future<List<Course>> getAllCourse(){
-    return CourseDataSource().getAllCourse();
+  Future<List<Course>> getCourse(){
+    return CourseDataSource().getCourse();
   }
 }

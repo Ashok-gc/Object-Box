@@ -96,7 +96,7 @@ final _entities = <ModelEntity>[
       properties: <ModelProperty>[
         ModelProperty(
             id: const IdUid(1, 2851840729173984969),
-            name: 'courseId',
+            name: 'courseID',
             type: 6,
             flags: 129),
         ModelProperty(
@@ -230,20 +230,20 @@ ModelDefinition getObjectBoxModel() {
         model: _entities[2],
         toOneRelations: (Course object) => [],
         toManyRelations: (Course object) => {
-              RelInfo<Student>.toManyBacklink(1, object.courseId):
+              RelInfo<Student>.toManyBacklink(1, object.courseID):
                   object.student
             },
-        getId: (Course object) => object.courseId,
+        getId: (Course object) => object.courseID,
         setId: (Course object, int id) {
-          object.courseId = id;
+          object.courseID = id;
         },
         objectToFB: (Course object, fb.Builder fbb) {
           final courseNameOffset = fbb.writeString(object.courseName);
           fbb.startTable(3);
-          fbb.addInt64(0, object.courseId);
+          fbb.addInt64(0, object.courseID);
           fbb.addOffset(1, courseNameOffset);
           fbb.finish(fbb.endTable());
-          return object.courseId;
+          return object.courseID;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
@@ -252,12 +252,12 @@ ModelDefinition getObjectBoxModel() {
           final object = Course(
               const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, ''),
-              courseId:
+              courseID:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0));
           InternalToManyAccess.setRelInfo(
               object.student,
               store,
-              RelInfo<Student>.toManyBacklink(1, object.courseId),
+              RelInfo<Student>.toManyBacklink(1, object.courseID),
               store.box<Course>());
           return object;
         })
@@ -308,8 +308,8 @@ class Student_ {
 
 /// [Course] entity fields to define ObjectBox queries.
 class Course_ {
-  /// see [Course.courseId]
-  static final courseId =
+  /// see [Course.courseID]
+  static final courseID =
       QueryIntegerProperty<Course>(_entities[2].properties[0]);
 
   /// see [Course.courseName]

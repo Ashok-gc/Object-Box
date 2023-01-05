@@ -14,6 +14,6 @@ class BatchRepositoryImp extends BatchRepository {
 
   @override
   Future<List<Batch>> getBatch() {
-    return BatchDataSource().getAllBatches();
+    return BatchDataSource().getBatch();
   }
 }

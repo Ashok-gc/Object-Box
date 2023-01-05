@@ -12,15 +12,19 @@ class CourseDataSource{
     try{
       return objectBoxInstance.addCourse(course);
     } catch(e){
-      return 0;
+      return Future.value(0);
+      // or
+      // return 0;
     }
   }
 
-  Future<List<Course>> getAllCourse() async{
+  Future<List<Course>> getCourse() async{
     try{
       return objectBoxInstance.getAllCourse();
     } catch (e){
-      return [];
+      throw Exception("error in getting all student");
+      // or
+      // return 0;
     }
   }
 }
