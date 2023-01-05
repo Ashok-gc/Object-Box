@@ -1,7 +1,7 @@
 import 'package:batch_student_starter/data_source/local_data_source/course_data_source.dart';
 
 import '../model/course.dart';
-import '../model/student.dart';
+// import '../model/student.dart';
 
 abstract class CourseRepository{
   Future<int> addCourse(Course course);

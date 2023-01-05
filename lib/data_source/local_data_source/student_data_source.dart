@@ -23,6 +23,8 @@ class StudentDataSource {
     }
   }
 
+  // Future<Student?> loginStudent(Student username, String password) {}
+
   // Future<Student?> loginStudent(String username, String password) {
   //   try {
   //     return Future.value(objectBoxInstance.loginStudent(username));

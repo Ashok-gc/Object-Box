@@ -59,10 +59,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final batch = _lstBatches
         .firstWhere((element) => element.batchName == _dropDownValue);
 
-    student.batch.target = batch;
+    // student.batch.target = batch;
+    
+
+    for (Course c in lstcourseselected){
+      student.course.add(c);
+    }
 
     int status = await StudentRepositoryImp().addStudent(student);
+    _showStudentCourse();
     _showMessage(status);
+  }
+
+  _showStudentCourse() async{
+    List<Student> lstStudent = await StudentRepositoryImp().getStudents();
+    for (Student s in lstStudent){
+      debugPrint(s.fname);
+      for (Course c in s.course){
+        debugPrint(s.fname);
+        debugPrint(s.lname);
+        debugPrint(c.courseName);
+      }
+    }
   }
 
   @override
@@ -173,8 +191,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   FutureBuilder(
                       future: CourseRepositoryImpl().getAllCourse(),
                       builder: ((context, snapshot) {
-                        if (snapshot.hasData) {
-                          return MultiSelectDialogField(
+                            if (snapshot.hasData) {
+                              return MultiSelectDialogField(
+                                validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please select course';
+                                }
+                                return null;
+                              },
                               items: snapshot.data!
                                   .map((course) => MultiSelectItem(
                                       course, course.courseName))

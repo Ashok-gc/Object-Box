@@ -53,6 +53,16 @@ class ObjectBoxInstance {
     return _student.getAll();
   }
 
+
+  //login Student
+  Student? loginStudent(String username, String password){
+    return _student
+      .query(Student_.username.equals(username)&
+        Student_.password.equals(password))
+      .build()
+      .findFirst();
+  }
+
   int addCourse(Course course) {
     return _course.put(course);
   }
@@ -81,6 +91,7 @@ class ObjectBoxInstance {
       addCourse(Course("Android Mobile"));
       addCourse(Course("AI"));
       addCourse(Course("Computing"));
+      addCourse(Course("Design"));
     }
   }
 }
